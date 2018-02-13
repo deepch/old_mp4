@@ -127,7 +127,8 @@ func ExtractADTSFrames(frames []byte) (config MPEG4AudioConfig, payload []byte, 
 	for len(frames) > 0 {
 		var n, framelen int
 		if config, payload, n, framelen, err = ReadADTSFrame(frames); err != nil {
-			return
+			continue
+			//return
 		}
 		frames = frames[framelen:]
 		samples += n
